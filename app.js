@@ -95,3 +95,51 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open(url, '_blank');
     });
 });
+
+
+// Pega elementos do modal
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modal-title");
+const modalImg = document.getElementById("modal-img");
+const modalDesc = document.getElementById("modal-desc");
+const modalWhats = document.getElementById("modal-whats");
+const closeModal = document.querySelector(".close-modal");
+
+// Pega todos os cards
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        const title = card.querySelector("h3").innerText;
+        const img = card.querySelector("img").src;
+        const desc = card.querySelector("p").innerText;
+
+        modalTitle.innerText = title;
+        modalImg.src = img;
+        modalDesc.innerText = desc;
+
+        // link do whatsapp (coloca o seu número no link)
+        const phone = "5511999999999"; 
+        const message = `Olá! Gostaria de saber mais sobre: ${title}`;
+        modalWhats.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+        modal.style.display = "flex";
+    });
+});
+
+// Fechar modal
+closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+// Fecha se clicar fora do conteúdo
+window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+
+document.getElementById("btn-fechar").addEventListener("click", () => {
+    document.getElementById("modal").style.display = "none";
+});
