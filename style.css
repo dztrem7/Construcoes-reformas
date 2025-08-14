@@ -132,11 +132,16 @@ a {
     font-weight: bold;
     border-radius: 5px;
     transition: 0.3s;
+    margin-top: 10px;
 }
 
 .btn:hover {
     background: #e66900;
     transform: scale(1.05);
+}
+
+#modal-desc {
+    font-weight: 500;
 }
 
 /* -------------------- SEÇÕES -------------------- */
