@@ -67,17 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         const nome = document.getElementById('nome').value.trim();
-        const telefone = document.getElementById('telefone').value.trim();
+        const telefoneRaw = document.getElementById('telefone').value.trim();
         const projeto = document.getElementById('projeto').value.trim();
+
+        // Remove espaços, parênteses e traços para validar
+        const telefone = telefoneRaw.replace(/\D/g, ''); // só números
 
         // Limpa erro anterior
         telefoneErro.textContent = '';
 
-        // Validação básica do telefone: DDD + 8 ou 9 dígitos
+        // Validação: DDD + 8 ou 9 dígitos
         const telefoneRegex = /^[1-9]{2}[0-9]{8,9}$/;
 
         if (!telefoneRegex.test(telefone)) {
-            telefoneErro.textContent = "Número inválido! Use DDD + telefone (ex: 11999999999).";
+            telefoneErro.textContent = "Número inválido! Use DDD + telefone (ex: 11 99999 9999).";
             return;
         }
 
@@ -85,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const whatsappNumber = '5511999999999';
 
         // Mensagem formatada
-        const mensagem = `Olá! Meu nome é ${nome}, meu telefone é ${telefone} e meu projeto é: ${projeto}`;
+        const mensagem = `Olá! Meu nome é ${nome}, meu telefone é ${telefoneRaw} e meu projeto é: ${projeto}`;
 
         // Abrir WhatsApp
         const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`;
