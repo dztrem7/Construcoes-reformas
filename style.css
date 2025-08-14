@@ -73,6 +73,17 @@ a {
     color: #ff7b00;
 }
 
+.nav-header a {
+    color: white;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-header a:hover {
+    color: #ff7b00;
+}
+
 /* -------------------- BANNER -------------------- */
 .banner {
     background: url('banner.jpg') center/cover no-repeat;
@@ -354,6 +365,10 @@ body > *:not(header):not(footer).show {
     .hamburger {
         display: block;
     }
+
+    .nav-header {
+        display: none;
+    }
 }
 
 
@@ -426,6 +441,10 @@ body > *:not(header):not(footer).show {
 @media (max-width: 768px) {
     .hamburger {
         display: block;
+    }
+
+    .nav-header {
+        display: none;
     }
 }
 

@@ -1,13 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Seleciona todos os elementos do body, exceto header e footer e seus filhos
+    // ==== Animação ao rolar a página ====
     const elements = document.querySelectorAll('body > *:not(header):not(footer)');
 
     function checkScroll() {
         const triggerBottom = window.innerHeight / 5 * 4;
-
         elements.forEach(el => {
             const elTop = el.getBoundingClientRect().top;
-
             if (elTop < triggerBottom) {
                 el.classList.add('show');
             } else {
@@ -17,129 +15,101 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('scroll', checkScroll);
-    checkScroll(); // aplica no carregamento
-});
+    checkScroll();
 
-
-document.addEventListener('DOMContentLoaded', () => {
+    // ==== Menu Hamburger ====
     const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav');
-
-    hamburger.addEventListener('click', () => {
-        nav.classList.toggle('show');
-    });
-
-    // Fechar menu ao clicar em algum link
-    nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('show');
-        });
-    });
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav');
+    const nav = document.querySelector('.nav'); // pega o menu lateral
     const closeBtn = document.getElementById('close-btn');
 
-    hamburger.addEventListener('click', () => {
-        nav.classList.add('show');
-    });
-
-    closeBtn.addEventListener('click', () => {
-        nav.classList.remove('show');
-    });
-
-    nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('show');
+    if (hamburger && nav) {
+        hamburger.addEventListener('click', () => {
+            nav.classList.add('show');
         });
-    });
-});
 
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                nav.classList.remove('show');
+            });
+        }
 
-document.addEventListener('DOMContentLoaded', () => {
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('show');
+            });
+        });
+    }
+
+    // ==== Formulário WhatsApp ====
     const form = document.getElementById('contato-form');
     const telefoneErro = document.getElementById('telefone-erro');
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-        const nome = document.getElementById('nome').value.trim();
-        const telefoneRaw = document.getElementById('telefone').value.trim();
-        const projeto = document.getElementById('projeto').value.trim();
+            const nome = document.getElementById('nome').value.trim();
+            const telefoneRaw = document.getElementById('telefone').value.trim();
+            const projeto = document.getElementById('projeto').value.trim();
+            const telefone = telefoneRaw.replace(/\D/g, '');
+            telefoneErro.textContent = '';
 
-        // Remove espaços, parênteses e traços para validar
-        const telefone = telefoneRaw.replace(/\D/g, ''); // só números
+            const telefoneRegex = /^[1-9]{2}[0-9]{8,9}$/;
+            if (!telefoneRegex.test(telefone)) {
+                telefoneErro.textContent = "Número inválido! Use DDD + telefone (ex: 11 99999 9999).";
+                return;
+            }
 
-        // Limpa erro anterior
-        telefoneErro.textContent = '';
-
-        // Validação: DDD + 8 ou 9 dígitos
-        const telefoneRegex = /^[1-9]{2}[0-9]{8,9}$/;
-
-        if (!telefoneRegex.test(telefone)) {
-            telefoneErro.textContent = "Número inválido! Use DDD + telefone (ex: 11 99999 9999).";
-            return;
-        }
-
-        // Número do WhatsApp (substitua pelo seu número)
-        const whatsappNumber = '5511999999999';
-
-        // Mensagem formatada
-        const mensagem = `Olá! Meu nome é ${nome}, meu telefone é ${telefoneRaw} e meu projeto é: ${projeto}`;
-
-        // Abrir WhatsApp
-        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`;
-        window.open(url, '_blank');
-    });
-});
-
-
-// Pega elementos do modal
-const modal = document.getElementById("modal");
-const modalTitle = document.getElementById("modal-title");
-const modalImg = document.getElementById("modal-img");
-const modalDesc = document.getElementById("modal-desc");
-const modalWhats = document.getElementById("modal-whats");
-const closeModal = document.querySelector(".close-modal");
-
-// Pega todos os cards
-const cards = document.querySelectorAll(".card");
-
-cards.forEach(card => {
-    card.addEventListener("click", () => {
-        const title = card.querySelector("h3").innerText;
-        const img = card.querySelector("img").src;
-        const desc = card.querySelector("p").innerText;
-
-        modalTitle.innerText = title;
-        modalImg.src = img;
-        modalDesc.innerText = desc;
-
-        // link do whatsapp (coloca o seu número no link)
-        const phone = "5511999999999"; 
-        const message = `Olá! Gostaria de saber mais sobre: ${title}`;
-        modalWhats.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-        modal.style.display = "flex";
-    });
-});
-
-// Fechar modal
-closeModal.addEventListener("click", () => {
-    modal.style.display = "none";
-});
-
-// Fecha se clicar fora do conteúdo
-window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        modal.style.display = "none";
+            const whatsappNumber = '5511995286351';
+            const mensagem = `Olá! Meu nome é ${nome}, meu telefone é ${telefoneRaw} e meu projeto é: ${projeto}`;
+            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        });
     }
-});
 
+    // ==== Modal de Cards ====
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalImg = document.getElementById("modal-img");
+    const modalDesc = document.getElementById("modal-desc");
+    const modalWhats = document.getElementById("modal-whats");
+    const closeModal = document.querySelector(".close-modal");
+    const cards = document.querySelectorAll(".card");
 
-document.getElementById("btn-fechar").addEventListener("click", () => {
-    document.getElementById("modal").style.display = "none";
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            const title = card.querySelector("h3").innerText;
+            const img = card.querySelector("img").src;
+            const desc = card.querySelector("p").innerText;
+
+            modalTitle.innerText = title;
+            modalImg.src = img;
+            modalDesc.innerText = desc;
+
+            const phone = "5511995286351";
+            const message = `Olá! Gostaria de saber mais sobre: ${title}`;
+            modalWhats.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+            modal.style.display = "flex";
+        });
+    });
+
+    if (closeModal) {
+        closeModal.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+    }
+
+    window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    const btnFechar = document.getElementById("btn-fechar");
+    if (btnFechar) {
+        btnFechar.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+    }
 });
