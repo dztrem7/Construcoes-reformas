@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construções & Reformas - Serviços Profissionais</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+    <div class="container">
+        <h1 class="logo">Construtora<span>Pro</span></h1>
+        
+        <!-- Botão hamburger -->
+        <div class="hamburger" id="hamburger">&#9776;</div>
+
+        <!-- Menu -->
+        <nav class="nav" id="nav">
+            <!-- Botão de fechar -->
+            <div class="close-btn" id="close-btn">&times;</div>
+
+            <a href="#cozinhas">Cozinhas</a>
+            <a href="#quartos">Quartos</a>
+            <a href="#banheiros">Banheiros</a>
+            <a href="#salas">Salas</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </div>
+</header>
+
+
+
+    <!-- BANNER -->
+    <section class="banner">
+        <div class="banner-text">
+            <h2>Construímos seu sonho</h2>
+            <p>Reformas, acabamentos e construção de ambientes com qualidade e confiança.</p>
+            <a href="#contato" class="btn">Solicitar Orçamento</a>
+        </div>
+    </section>
+
+    <!-- COZINHAS -->
+    <section id="cozinhas" class="section">
+        <h2>Cozinhas</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.stockcake.com/public/f/0/a/f0a9652d-f99c-4f80-b758-c912017f5158_large/modern-kitchen-interior-stockcake.jpg" alt="Cozinha moderna">
+                <h3>Moderna</h3>
+                <p>Design clean e funcional para o dia a dia.</p>
+            </div>
+            <div class="card">
+                <img src="https://ideas.modcabinetry.com/hubfs/Modern-practicality-coupled-with-rustic-elements-like-wooden-ceiling-beams-and-woodsy-cabinets-in-the-kitchen-36815%20by%20Urbaine%20Home-jpg.jpeg" alt="Cozinha rústica">
+                <h3>Rústica</h3>
+                <p>Estilo aconchegante e cheio de personalidade.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUARTOS -->
+    <section id="quartos" class="section">
+        <h2>Quartos</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://finger.ind.br/wp-content/uploads/2023/06/post-thumbnail-16d90dc68e74078c3f09595bb7474e88-1170x685.jpeg" alt="Quarto moderno">
+                <h3>Moderno</h3>
+                <p>Ambiente sofisticado e funcional para relaxar.</p>
+            </div>
+            <div class="card">
+                <img src="https://finger.ind.br/wp-content/uploads/2020/01/as-vantagens-de-um-quarto-infantil-planejado.jpe" alt="Quarto infantil">
+                <h3>Infantil</h3>
+                <p>Espaço seguro e lúdico para os pequenos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANHEIROS -->
+    <section id="banheiros" class="section">
+        <h2>Banheiros</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://apeplanejado.com.br/wp-content/uploads/2024/07/Banheiro-minimalista-pequeno-2.jpg" alt="Banheiro minimalista">
+                <h3>Minimalista</h3>
+                <p>Acabamento limpo e elegante para o dia a dia.</p>
+            </div>
+            <div class="card">
+                <img src="https://finger.ind.br/wp-content/uploads/2022/12/6-ideias-de-banheiro-de-luxo-para-se-inspirar-2-1024x683.jpg" alt="Banheiro luxuoso">
+                <h3>Luxuoso</h3>
+                <p>Detalhes refinados para um toque de sofisticação.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SALAS -->
+    <section id="salas" class="section">
+        <h2>Salas</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://finger.ind.br/wp-content/uploads/2017/05/iluminacao-a-alma-do-ambiente-2-scaled.jpg" alt="Sala integrada">
+                <h3>Integrada</h3>
+                <p>Ambiente amplo e moderno para receber visitas.</p>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQybJT0sn8IFbD3-BqKKUWZyJVvsga91Ax3ug&s" alt="Sala rústica">
+                <h3>Rústica</h3>
+                <p>Estilo aconchegante com toque natural.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="section sobre">
+        <div class="sobre-content">
+            <img src="https://img.freepik.com/fotos-gratis/jovem-artesao-a-construir-uma-casa_1303-27969.jpg?semt=ais_hybrid&w=740" alt="Pedreiro trabalhando">
+            <div>
+                <h2>Sobre Nós</h2>
+                <p>Com anos de experiência, realizamos serviços de construção e reforma em diversos ambientes. Nosso compromisso é entregar obras de qualidade, no prazo e com acabamentos impecáveis.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+  <section id="contato" class="section contato">
+    <h2>Solicite um Orçamento</h2>
+    <form class="form" id="contato-form">
+        <input type="text" id="nome" placeholder="Seu nome" required>
+        <input type="tel" id="telefone" placeholder="Seu telefone (ex: 11999999999)" required>
+        <span id="telefone-erro" class="erro"></span>
+        <textarea id="projeto" placeholder="Descreva seu projeto" required></textarea>
+        <button type="submit" class="btn">Enviar para o WhatsApp</button>
+    </form>
+</section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2025 ConstrutoraPro - Todos os direitos reservados</p>
+    </footer>
+
+</body>
+<script src="./app.js"></script>
+</html>
+
